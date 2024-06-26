@@ -2,6 +2,7 @@ import axios from "axios"
 import { B } from "bhala"
 import download from "download"
 import { uniq } from "ramda"
+import { promises as fs } from "node:fs"
 
 import "dotenv/config"
 
@@ -109,3 +110,11 @@ for (const downloadUrl of downloadUrls) {
 		B.error(`Error downloading ${downloadUrl}: ${err}`)
 	}
 }
+
+const songPaths = (await fs.readdir("./data")).filter((path) =>
+	path.endsWith(".mp3"),
+)
+const m3uSource = songPaths.join("\n")
+await fs.writeFile("./data/playlist.m3u", m3uSource)
+
+B.info("Now you can run `cvlc --loop ./data/playlist.m3u`.")

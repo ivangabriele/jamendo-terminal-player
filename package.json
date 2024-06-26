@@ -27,6 +27,7 @@
 		"bhala": "3.0.4",
 		"dotenv": "16.4.5",
 		"download": "8.0.0",
+		"execa": "9.3.0",
 		"find-exec": "1.0.3",
 		"ramda": "0.30.1"
 	},
