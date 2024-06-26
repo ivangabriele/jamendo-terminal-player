@@ -9,6 +9,8 @@ export class Player {
 
 	constructor() {
 		this.#osPlayerCliName = findExec(OS_PLAYERS_CLI_NAMES)
+
+		console.log(this.#osPlayerCliName)
 	}
 
 	play(url: string): Promise<void> {

@@ -1,5 +1,6 @@
 import axios from "axios"
 import { B } from "bhala"
+import download from "download"
 import { uniq } from "ramda"
 
 import "dotenv/config"
@@ -88,4 +89,23 @@ class App {
 	}
 }
 
-new App()
+const response = await axios.get("https://api.jamendo.com/v3.0/tracks", {
+	params: {
+		// biome-ignore lint/style/useNamingConvention: <explanation>
+		client_id: process.env.JAMENDO_API_CLIENT_ID,
+		format: "json",
+		limit: 200,
+		order: "popularity_week",
+	},
+})
+
+const downloadUrls = response.data.results.map((track) => track.audiodownload)
+
+for (const downloadUrl of downloadUrls) {
+	B.info(`Downloading ${downloadUrl}...`)
+	try {
+		await download(downloadUrl, "./data")
+	} catch (err) {
+		B.error(`Error downloading ${downloadUrl}: ${err}`)
+	}
+}

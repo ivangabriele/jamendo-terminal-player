@@ -26,6 +26,7 @@
 		"axios": "1.7.2",
 		"bhala": "3.0.4",
 		"dotenv": "16.4.5",
+		"download": "8.0.0",
 		"find-exec": "1.0.3",
 		"ramda": "0.30.1"
 	},
@@ -41,6 +42,7 @@
 		"@swc/cli": "0.3.12",
 		"@swc/core": "1.5.7",
 		"@swc/jest": "0.2.36",
+		"@types/download": "^8",
 		"@types/eslint__js": "8.42.3",
 		"@types/find-exec": "^1",
 		"@types/jest": "29.5.12",
