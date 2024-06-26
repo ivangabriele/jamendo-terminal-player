@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pkill vlc
+pkill vlc >> "${PWD}/../data/stop.log" 2>&1
